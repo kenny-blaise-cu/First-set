@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Be My Valentine ❤️</title>
-
   <style>
     body {
       margin: 0;
@@ -17,50 +16,58 @@
       overflow: hidden;
     }
 
-    /* SLIDESHOW */
     .slideshow {
       position: fixed;
-      inset: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       z-index: -2;
       overflow: hidden;
     }
 
     .slide {
       position: absolute;
-      inset: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background-size: cover;
       background-position: center;
       opacity: 0;
       filter: blur(6px);
-      transform: scale(1.08);
-      animation: fade 30s infinite ease-in-out;
-      transition: transform 5s ease;
+      transform: scale(1.05);
+      animation: fade 24s infinite;
     }
 
     .slide:nth-child(1) { background-image: url('image1.jpg'); animation-delay: 0s; }
-    .slide:nth-child(2) { background-image: url('image2.jpg'); animation-delay: 5s; }
-    .slide:nth-child(3) { background-image: url('image3.jpg'); animation-delay: 10s; }
-    .slide:nth-child(4) { background-image: url('image4.jpg'); animation-delay: 15s; }
-    .slide:nth-child(5) { background-image: url('image5.jpg'); animation-delay: 20s; }
-    .slide:nth-child(6) { background-image: url('image6.jpg'); animation-delay: 25s; }
+    .slide:nth-child(2) { background-image: url('image2.jpg'); animation-delay: 8s; }
+    .slide:nth-child(3) { background-image: url('image3.jpg'); animation-delay: 16s; }
 
     @keyframes fade {
       0%   { opacity: 0; }
       10%  { opacity: 1; }
-      40%  { opacity: 1; }
-      50%  { opacity: 0; }
+      30%  { opacity: 1; }
+      40%  { opacity: 0; }
       100% { opacity: 0; }
     }
 
-    /* OVERLAY */
     .overlay {
       position: fixed;
-      inset: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background: rgba(0,0,0,0.35);
       z-index: -1;
     }
 
-    /* CARD */
+    
+      33%  { background-image: url('image2.jpg'); }
+      66%  { background-image: url('image3.jpg'); }
+      100% { background-image: url('image1.jpg'); }
+    }
+
     .card {
       background: white;
       padding: 40px 30px;
@@ -76,12 +83,8 @@
       margin-bottom: 10px;
     }
 
-    h2 {
-      color: #333;
-    }
-
     p {
-      color: #444;
+      color: #ffffff;
       font-size: 16px;
       line-height: 1.6;
       margin-bottom: 30px;
@@ -118,12 +121,13 @@
       position: relative;
     }
 
-    /* HEARTS */
     .hearts {
-      position: fixed;
-      inset: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
       pointer-events: none;
-      overflow: hidden;
     }
 
     .heart {
@@ -156,17 +160,12 @@
     }
   </style>
 </head>
-
 <body>
   <div class="slideshow">
     <div class="slide"></div>
     <div class="slide"></div>
     <div class="slide"></div>
-    <div class="slide"></div>
-    <div class="slide"></div>
-    <div class="slide"></div>
   </div>
-
   <div class="overlay"></div>
   <div class="hearts" id="hearts"></div>
 
@@ -201,8 +200,8 @@
       document.querySelector('.card').innerHTML = `
         <h1>Yay, Chisom!!! 💕🎉</h1>
         <p>
-          You drive me crazy 😍<br>
-          In the best possible way ❤️
+          You drive me crazy!!! 😍😍
+          In a good way 😅❤️
         </p>
         <h2>Happy Valentine's Day 💘</h2>
       `;
@@ -212,16 +211,17 @@
     function createHearts() {
       for (let i = 0; i < 30; i++) {
         const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.textContent = '❤️';
+        heart.classList.add('heart');
+        heart.innerText = '❤️';
         heart.style.left = Math.random() * 100 + 'vw';
         heart.style.animationDuration = (2 + Math.random() * 3) + 's';
         heartsContainer.appendChild(heart);
 
-        setTimeout(() => heart.remove(), 5000);
+        setTimeout(() => {
+          heart.remove();
+        }, 5000);
       }
     }
   </script>
 </body>
 </html>
-
